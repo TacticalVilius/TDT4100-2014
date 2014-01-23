@@ -29,11 +29,11 @@ public class LocationTest extends TestCase {
 	)
 	public void testGetSetX() {
 		location.setX(0);
-		assertEquals(location.getX(), 0);
+		assertEquals(0, location.getX());
 		location.setX(10);
-		assertEquals(location.getX(), 10);
+		assertEquals(10, location.getX());
 		location.setX(-1);
-		assertEquals(location.getX(), -1);
+		assertEquals(-1, location.getX());
 	}
 	
 	@JExercise(
@@ -42,11 +42,11 @@ public class LocationTest extends TestCase {
 		)
 		public void testGetSetY() {
 			location.setY(0);
-			assertEquals(location.getY(), 0);
+			assertEquals(0, location.getY());
 			location.setY(10);
-			assertEquals(location.getY(), 10);
+			assertEquals(10, location.getY());
 			location.setY(-1);
-			assertEquals(location.getY(), -1);
+			assertEquals(-1, location.getY());
 		}
 	
 	@JExercise(

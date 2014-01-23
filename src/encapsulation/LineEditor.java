@@ -20,9 +20,9 @@ public class LineEditor {
 	}
 	
 	public void setInsertionIndex(int insertionIndex) {
-		if (insertionIndex >= 0 && insertionIndex <= text.length()) {
-			this.insertionIndex = insertionIndex;
-		}
+		if (insertionIndex < 0) throw new IllegalArgumentException();
+		if (insertionIndex > text.length()) throw new IllegalStateException();
+		this.insertionIndex = insertionIndex;
 	}
 	
 	public int getInsertionIndex() {

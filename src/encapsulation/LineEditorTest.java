@@ -34,9 +34,9 @@ public class LineEditorTest extends TestCase {
 	)
 	public void testGetSetText() {
 		lineEditor.setText("ABC");
-		assertEquals(lineEditor.getText(), "ABC");
+		assertEquals("ABC", lineEditor.getText());
 		lineEditor.setText("");
-		assertEquals(lineEditor.getText(), "");
+		assertEquals("", lineEditor.getText());
 	}
 	
 	@JExercise(
@@ -45,14 +45,24 @@ public class LineEditorTest extends TestCase {
 	)
 	public void testGetSetInsertionIndex() {
 		lineEditor.setInsertionIndex(0);
-		assertEquals(lineEditor.getInsertionIndex(), 0);
+		assertEquals(0, lineEditor.getInsertionIndex());
 		lineEditor.setText("ABC");
 		lineEditor.setInsertionIndex(3);
-		assertEquals(lineEditor.getInsertionIndex(), 3);
-		lineEditor.setInsertionIndex(-1);
-		assertEquals(lineEditor.getInsertionIndex(), 3);
-		lineEditor.setInsertionIndex(4);
-		assertEquals(lineEditor.getInsertionIndex(), 3);
+		assertEquals(3, lineEditor.getInsertionIndex());
+		try {
+			lineEditor.setInsertionIndex(-1);
+			fail();
+		} catch (Exception e) {
+			assertEquals(3, lineEditor.getInsertionIndex());
+			assertTrue (e instanceof IllegalArgumentException);
+		}
+		try {
+			lineEditor.setInsertionIndex(4);
+			fail();
+		} catch (Exception e) {
+			assertEquals(3, lineEditor.getInsertionIndex());
+			assertTrue (e instanceof IllegalStateException);
+		}
 	}
 	
 	@JExercise(
@@ -61,11 +71,11 @@ public class LineEditorTest extends TestCase {
 	)
 	public void testSetTextShorterThanInsertionIndex() {
 		lineEditor.setText("ABC");
-		assertEquals(lineEditor.getText(), "ABC");
+		assertEquals("ABC", lineEditor.getText());
 		lineEditor.setInsertionIndex(3);
-		assertEquals(lineEditor.getInsertionIndex(), 3);
+		assertEquals(3, lineEditor.getInsertionIndex());
 		lineEditor.setText("AB");
-		assertEquals(lineEditor.getText(), "AB");
+		assertEquals("AB", lineEditor.getText());
 		assertTrue(lineEditor.getInsertionIndex() >= 0 && lineEditor.getInsertionIndex() <= 2);
 	}
 	
